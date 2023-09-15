@@ -13,6 +13,11 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {Box, Button, Typography} from "@mui/material";
 import {useState} from "react";
+import {Step1} from "./steps/Step1";
+import {Step2} from "./steps/Step2";
+import {Step3} from "./steps/Step3";
+import {Step4} from "./steps/Step4";
+import Confetti from "react-confetti";
 
 
 function TabPanel(props) {
@@ -104,7 +109,7 @@ export const StepperStep = () => {
 
     return <Stack sx={{
         width: '100%',
-        height: "calc(100vh - 64px)",
+        height: "100%",
         padding: "32px 0px"
     }} spacing={4} display={"flex"}>
         <Stepper alternativeLabel activeStep={value} connector={<ColorlibConnector />}>
@@ -115,7 +120,12 @@ export const StepperStep = () => {
             ))}
         </Stepper>
         <Box sx={{flexGrow:1}}>
-
+            {
+                value === 3 && <Confetti
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                />
+            }
         <SwipeableViews
             axis={ 'x'}
             index={value}
@@ -123,16 +133,16 @@ export const StepperStep = () => {
 
         >
             <TabPanel value={value} index={0}>
-                Item One
+                <Step1/>
             </TabPanel>
             <TabPanel value={value} index={1} >
-                Item Two
+                <Step2/>
             </TabPanel>
             <TabPanel value={value} index={2} >
-                Item Three
+                <Step3/>
             </TabPanel>
             <TabPanel value={value} index={3} >
-                Item Four
+                <Step4/>
             </TabPanel>
         </SwipeableViews>
         </Box>

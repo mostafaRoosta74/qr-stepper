@@ -11,7 +11,7 @@ function App() {
     })
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header" style={{height:"100vh"}}>
           <ThemeProvider theme={theme}>
               <StepperStep/>
           </ThemeProvider>
